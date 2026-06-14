@@ -1,0 +1,1 @@
+print("vmware-dr-automation")
