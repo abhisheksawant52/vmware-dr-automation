@@ -1,1 +1,0 @@
-print("vmware-dr-automation")

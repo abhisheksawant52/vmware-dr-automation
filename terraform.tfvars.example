@@ -1,0 +1,27 @@
+vsphere_server       = "vcenter-protected.example.com"
+vsphere_user         = "administrator@vsphere.local"
+vsphere_password     = "change-me"
+allow_unverified_ssl = true
+protected_datacenter = "DC-Primary"
+
+recovery_site = {
+  vcenter_url = "https://vcenter-recovery.example.com"
+  srm_url     = "https://srm-recovery.example.com"
+}
+
+protection_groups = [
+  {
+    name             = "pg-tier1-db"
+    replication_type = "vsphere-replication"
+    rpo_minutes      = 15
+    vms              = ["db-01", "db-02"]
+  }
+]
+
+recovery_plans = [
+  {
+    name              = "rp-critical"
+    protection_groups = ["pg-tier1-db"]
+    priority_tiers    = [["db-01"], ["db-02"]]
+  }
+]
